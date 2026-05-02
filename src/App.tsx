@@ -6,7 +6,7 @@ import electronics from '../public/electronics.png'
 import programing from '../public/programing.png'
 import desgin from '../public/designthink.png'
 import pic1 from '../public/pic1.jpg'
-import vexworld from '../public/vexworld.png'
+import worldQualNew from '../public/worldqualnew.jpg'
 import robot from '../public/main.png'
 import qrcode from '../public/qr_code.png'
 
@@ -51,7 +51,7 @@ function App() {
           <div className="logo-container">
             <a href="#" className="logo-link">
               <img src="/reimagine.png" alt="Re-imagine Robotics Logo" className="logo-image" />
-              <h1 className="header-title">Re-imagine Robotics</h1>
+              <span className="header-title">Re-imagine Robotics</span>
             </a>
           </div>
           <button 
@@ -72,7 +72,8 @@ function App() {
         </div>
       </header>
 
-    <header className="hero">
+    <main>
+    <section className="hero" aria-label="Introduction">
       <div
         className="heroBg"
         style={{
@@ -89,16 +90,19 @@ function App() {
           <h1 className="hero-title">Re-imagine Robotics</h1>
           <h2 className="hero-subtitle">Building Future Engineers...</h2>
           <button className="cta-button" onClick={() => window.open('https://forms.gle/LRnv4SBBLyEqH5AV7', '_blank')}>Join Our Program</button>
+          <div className="scroll-indicator" onClick={scrollToAbout}>
+            <p>Explore Our Program</p>
+            <FaChevronDown className="chevron-down" />
+          </div>
         </div>
-        <div className="scroll-indicator" onClick={scrollToAbout}>
-          <p>Explore Our Program</p>
-          <FaChevronDown className="chevron-down" />
-        </div>
-      </header>
+      </section>
 
       <section id="about" className="section about-section">
         <div className="container">
           <h2 className="section-title">ABOUT THE PROGRAM</h2>
+          <p className="about-lead">
+            Re-imagine Robotics is a year-round STEM and robotics program for elementary and middle school students (grades 4–8). Teams build real robots with VEX IQ, learn mechanics, electronics, and coding, and follow the engineering design process while preparing for competition.
+          </p>
           <div className="about-content">
             <div className="about-image">
               <img src={pic1} alt="Students working on robotics" />
@@ -191,7 +195,7 @@ function App() {
               <h3 className="achievement-subtitle">to the teams for VEX <strong>WORLDS 2025 QUALIFICATION!</strong></h3>
             </div>
             
-            <img src={vexworld} alt="" className="program-image"/>
+            <img src={worldQualNew} alt="Re-imagine Robotics teams qualified for VEX Worlds 2025" className="achievement-qual-image"/>
 
             <div className="achievement-cards">
               <div className="achievement-card">
@@ -279,8 +283,9 @@ function App() {
           </div>
         </div>
       </section>
+    </main>
 
-      <footer className="footer">
+    <footer className="footer">
         <div className="footer-content">
           <div className="footer-logo">
             <h3 style={{color: '#e8d032'}}>Re-imagine Robotics</h3>

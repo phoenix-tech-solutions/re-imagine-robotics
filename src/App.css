@@ -39,25 +39,26 @@ body {
 
 .hero {
   height: 100vh;
-  background: linear-gradient(135deg, rgba(232, 208, 50, 0.9), rgba(232, 208, 50, 0.7)), url('https://images.unsplash.com/photo-1535378917042-10a22c95931a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-  background-size: cover;
-  background-position: center;
+  /* Fallback only; hero image is .heroBg + .heroOverlay */
+  background-color: var(--primary-color);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: var(--secondary-color);
-  padding: 0 20px;
+  padding: 70px 20px 0;
+  box-sizing: border-box;
   position: relative;
   overflow: hidden;
 }
 
 .heroBg {
   position: absolute;
-  inset: -25%;               /* extra room so rotation doesn't reveal corners */
+  inset: 0;
   background-size: cover;
-  background-position: center;
-  transform: rotate(90deg);
+  background-position: center 42%;
+  background-repeat: no-repeat;
   z-index: 0;
 }
 
@@ -68,13 +69,19 @@ body {
   pointer-events: none;
 }
 
-.hero > :not(.heroBg):not(.heroOverlay) {
+.hero > :not(.heroBg):not(.heroOverlay):not(.scroll-indicator) {
   position: relative;
   z-index: 2; /* keep content above bg + overlay */
 }
 
 .hero-content {
   max-width: 800px;
+  width: 100%;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   z-index: 2;
 }
 
@@ -86,6 +93,8 @@ body {
   letter-spacing: 2px;
   animation: fadeInDown 1s ease;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
 }
 
 .hero-subtitle {
@@ -94,6 +103,8 @@ body {
   font-weight: 300;
   animation: fadeInUp 1s ease 0.5s;
   animation-fill-mode: both;
+  text-align: center;
+  width: 100%;
 }
 
 .cta-button {
@@ -120,10 +131,7 @@ body {
 }
 
 .scroll-indicator {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-top: 2.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,6 +185,21 @@ body {
   background-color: var(--primary-color);
   margin: 15px auto 0;
   border-radius: 2px;
+}
+
+.about-section .section-title {
+  margin-bottom: 28px;
+}
+
+.about-lead {
+  max-width: 920px;
+  margin: 0 auto 52px;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75;
+  color: #444;
+  position: relative;
+  z-index: 1;
 }
 
 .about-section {
@@ -468,19 +491,34 @@ body {
   position: relative;
 }
 
-.achievement-section img {
+.achievement-qual-image {
   display: block;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1100px;
   height: auto;
+  max-height: 340px;
   margin: 20px auto;
   border-radius: 10px !important;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   object-fit: cover;
-  max-height: 400px;
+  object-position: center top;
   transition: transform 0.3s ease-in-out;
 }
 
-.achievement-section img:hover {
+@media (min-width: 769px) {
+  .achievement-qual-image {
+    max-height: 520px;
+    object-position: center top;
+  }
+}
+
+@media (min-width: 1200px) {
+  .achievement-qual-image {
+    max-height: 620px;
+  }
+}
+
+.achievement-qual-image:hover {
   transform: scale(1.01);
 }
 
@@ -1158,10 +1196,6 @@ body {
 
 .main-nav a:hover::after {
   width: 100%;
-}
-
-.hero {
-  padding-top: 70px;
 }
 
 @media (max-width: 768px) {
